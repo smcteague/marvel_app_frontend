@@ -1,15 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from '@mui/material/styles';
+import { Provider } from 'react-redux';
+import { FirebaseAppProvider } from 'reactfire';
+import 'firebase/auth'
+
+import { store } from './redux/store';
+import { theme } from './Theme/themes';
+import { Dashboard, SignIn, SignUp } from './components';
+// import { firebaseConfig } from './firebaseConfig';
 import reportWebVitals from './reportWebVitals';
+import './styles.css';
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <FirebaseAppProvider firebaseConfig={firebaseConfig}>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <Router>
+            <Routes>
+              <Route path='/signup' element={<SignUp />} />
+              <Route path='/signin' element={<SignIn />} />
+              <Route path='/dashboard' element={<Dashboard />} />
+
+            </Routes>
+          </Router>
+        </ThemeProvider>
+      </Provider>
+    </FirebaseAppProvider>
   </React.StrictMode>
 );
 
