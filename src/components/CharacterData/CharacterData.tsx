@@ -56,7 +56,6 @@ export const Gallery = () => {
     };
 
     const MyAuth = localStorage.getItem('myAuth');
-    console.log(MyAuth);
     if (MyAuth == 'true') {
         return (
             <ThemeProvider theme={theme}>
@@ -88,7 +87,7 @@ export const Gallery = () => {
                                 Check out my favorite characters!
                             </Typography>
                             <Stack
-                                sx = {{pt: 4}}
+                                sx = {{ pt: 4 }}
                                 direction = {{sm: 'column', md: 'row'}}
                                 spacing = {2}
                                 justifyContent = 'center'
@@ -102,7 +101,7 @@ export const Gallery = () => {
                                 <Dialog
                                     open = {dialogOpen}
                                     onClose = {handleDialogClickClose}
-                                    aria-labellby = 'form-dialog-title'
+                                    aria-labelledby = 'form-dialog-title'
                                 >
                                     <DialogTitle id='form-dialog-title'>
                                         Add New Character                                       
@@ -128,8 +127,7 @@ export const Gallery = () => {
                         maxWidth = 'md'
                     >
                         <Grid
-                            container
-                            spacing = {4}
+                            container spacing = {4}
                         >
                             {characterData.map((character: {
                                 id: string, 
@@ -157,12 +155,11 @@ export const Gallery = () => {
                                                 variant = 'h5'
                                                 component = 'h2'                                                
                                             >
-                                                {character.id}
+                                                {character.name}
                                             </Typography>
-                                            <Typography>{character.name}</Typography>
-                                            <Typography>{character.description}</Typography>
-                                            <Typography>{character.comics_appeared_in}</Typography>
-                                            <Typography>{character.super_power}</Typography>
+                                            <Typography>Description: {character.description}</Typography>
+                                            <Typography>Appeared in: {character.comics_appeared_in} comics</Typography>
+                                            <Typography>Superpower: {character.super_power}</Typography>
                                         </CardContent>
                                         <CardActions>
                                             <Button

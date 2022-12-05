@@ -12,6 +12,7 @@ import { Dashboard, Home, SignIn, SignUp } from './components';
 // import { firebaseConfig } from './firebaseConfig';
 import reportWebVitals from './reportWebVitals';
 import './styles.css';
+import { firebaseConfig } from './firebaseConfig';
 
 
 const root = ReactDOM.createRoot(
@@ -19,19 +20,21 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <Router>
-            <Routes>
-              <Route path='/' element={<Home title={'Marvel Characters Collection'} />} />
-              <Route path='/signup' element={<SignUp />} />
-              <Route path='/signin' element={<SignIn />} />
-              <Route path='/dashboard' element={<Dashboard />} />
+    <FirebaseAppProvider firebaseConfig={firebaseConfig}>
+        <Provider store={store}>
+          <ThemeProvider theme={theme}>
+            <Router>
+              <Routes>
+                <Route path='/' element={<Home title={'Marvel Characters Collection'} />} />
+                <Route path='/signup' element={<SignUp />} />
+                <Route path='/signin' element={<SignIn />} />
+                <Route path='/dashboard' element={<Dashboard />} />
 
-            </Routes>
-          </Router>
-        </ThemeProvider>
-      </Provider>
+              </Routes>
+            </Router>
+          </ThemeProvider>
+        </Provider>
+      </FirebaseAppProvider>
   </React.StrictMode>
 );
 

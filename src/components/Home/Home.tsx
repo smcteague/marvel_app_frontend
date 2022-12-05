@@ -56,13 +56,13 @@ export const Home = (props: Props) => {
                         <NavA to='/'>Home</NavA>
                     </li>
                     <li>
-                        <NavA to='/'>Sign Up</NavA>
+                        <NavA to='/signup'>Sign Up</NavA>
                     </li>
                     <li>
-                        <NavA to='/'>Sign In</NavA>
+                        <NavA to='/signin'>Sign In</NavA>
                     </li>
                     <li>
-                        <NavA to='/'>Dashboard</NavA>
+                        <NavA to='/dashboard'>Dashboard</NavA>
                     </li>
                 </HeaderNavigation>
             </NavbarContainer>

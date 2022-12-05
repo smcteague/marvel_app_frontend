@@ -1,4 +1,5 @@
-let token = localStorage.getItem('token') // <-- thanks Alex! :)
+let token = `8dd0c099847f2353bbe42a3a266e70dfe5f826e77daf4237`;
+
 
 export const myServerCalls = {
     get: async () => {
@@ -30,7 +31,7 @@ export const myServerCalls = {
         }
         return await response.json()
     },
-    udpate: async (id: string, data: any) => {
+    update: async (id: string, data: any) => {
         const response = await fetch(`https://dynamic-bush-group.glitch.me/api/characters/${id}`, {
             method: 'POST',
             headers: {

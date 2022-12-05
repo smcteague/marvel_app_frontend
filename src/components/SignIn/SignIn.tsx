@@ -19,7 +19,7 @@ import {
     AlertTitle,
     CircularProgress
 } from '@mui/material';
-import { useNavigate, Link, Navigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { rgbToHex, styled } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
@@ -88,11 +88,6 @@ export const GoogleButton = (props: buttonProps) => {
     const signIn = async () => {
         await signInWithGoogle()
         localStorage.setItem('myAuth', 'true')
-        onAuthStateChanged(auth, (user) => { // <-- thanks Alex! :)
-            if (user) {
-                localStorage.setItem("token", user.uid);
-            }
-        });
         navigate('/dashboard')
     }
 
@@ -150,16 +145,9 @@ export const SignIn = () => {
     }
 
     const onSubmit = async (data: any, event: any) => {
-        console.log(data.email, data.password)
-
         signInWithEmailAndPassword(auth, data.email, data.password)
             .then((userCredential) => {
                 localStorage.setItem('myAuth', 'true')
-                onAuthStateChanged(auth, (user) => { // <-- thanks Alex! :)
-                    if (user) {
-                      localStorage.setItem("token", user.uid);
-                    }
-                });
                 const user = userCredential.user;
                 navigate('/dashboard')
             })
@@ -189,7 +177,7 @@ export const SignIn = () => {
                 </div>
                 <div>
                     <label htmlFor='password'>Email</label>
-                    <Input
+                    <Input2
                         {...register('password')}
                         name = 'password'
                         placeholder = 'enter your password here'
@@ -230,14 +218,9 @@ export const SignUp = (props: userProps) => {
     }
 
     const onSubmit = async (data: any, event: any) => {
-        console.log(data.email, data.password)
-        console.log(auth)
-
         createUserWithEmailAndPassword(auth, data.email, data.password)
             .then((userCredential) => {
-                console.log(userCredential)
                 const user = userCredential.user;
-                console.log(user)
                 navigate('/signin')
             })
             .catch((error) => {

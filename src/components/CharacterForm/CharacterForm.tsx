@@ -34,7 +34,7 @@ export const CharacterForm = (props: CharacterFormProps) => {
         console.log(props.id)
 
         if (props.id!) {
-            await myServerCalls.udpate(props.id!, data)
+            await myServerCalls.update(props.id!, data)
             console.log(`Updated: ${data} ${props.id}`)
             window.location.reload()
             event.target.reset();
@@ -43,6 +43,8 @@ export const CharacterForm = (props: CharacterFormProps) => {
             dispatch(chooseDescription(data.description))
             dispatch(chooseComicsAppearedIn(data.comics_appeared_in))
             dispatch(chooseSuperpower(data.super_power))
+            await myServerCalls.create(store.getState())
+            window.location.reload()
         }
     }
 
