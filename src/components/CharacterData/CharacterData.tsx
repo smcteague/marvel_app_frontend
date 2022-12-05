@@ -30,7 +30,7 @@ const theme = createTheme();
 
 export const Gallery = () => {
     let {characterData, getData} = useGetData();
-    let {open, setOpen} = useState(false);
+    let [open, setOpen] = useState(false);
 
     const [dialogOpen, setDialogOpen] = useState(false);
 

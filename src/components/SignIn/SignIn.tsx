@@ -23,7 +23,7 @@ import { useNavigate, Link, Navigate } from 'react-router-dom';
 import { rgbToHex, styled } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
-import { Input, Input2 } from '../components/sharedComponents/Input';
+import { Input, Input2 } from '../sharedComponents/Input';
 
 
 const signInStyles = {
